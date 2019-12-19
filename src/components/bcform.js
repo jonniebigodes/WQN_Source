@@ -89,6 +89,24 @@ export default () => (
 
             </Col>
         </Row>
+        <Row form>
+            <Col md={5}>
+                <Label class="col control-label" for="contactMethod">How would you like to be contacted?</label>
+            </Col>
+            <Col md={7}>
+                <Label check>
+                    <Input type="radio" name="contactMethod" id="contactMethod-email" value="email"
+                        onchange='require("phoneGroup","phone",false);document.getElementById("phone").value =""; '
+                        required="" data-parsley-errors-container="#contactMethod_error">
+                        Email
+                </Label>
+                <Label check>
+                    <Input type="radio" name="contactMethod" id="contactMethod-phone" value="phone"
+                        onchange='require("phoneGroup","phone",true)' checked>
+                        Phone Call
+                </Label>
+            </Col>
+        </Row>
 
     <NormalField name="Full Name" />
     <NormalField name="Email" />
