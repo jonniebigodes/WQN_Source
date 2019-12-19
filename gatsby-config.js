@@ -3,14 +3,14 @@ let gtm = ''
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Bootstrap Strapi Starter`,
-    description: `Gatsby + Strapi = <3`,
-    author: `Jeremy Lynch`,
-    siteUrl: `https://gatsby-strapi-starter.netlify.com/`,
-    phone: '12345',
-    fax: '12345',
-    address: '123 fake street',
-    email: 'contact@test.com'
+    title: `We Quote Nevada 4`,
+    description: `The Best Insurance Agency in Nevada`,
+    author: `Ted`,
+    siteUrl: `https://wequotenevada.com`,
+    phone: `702-344-2400`,
+    fax: `Um...it's 2020...`,
+    address: `2561 Wigwam Parkway\nHenderson, NV 89074`,
+    email: `contact@WeQuoteNevada.com`
 
   },
   plugins: [
