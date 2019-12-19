@@ -2,26 +2,6 @@ import React from 'react'
 import {Container, Row, Col} from 'reactstrap'
 import { FaFacebookSquare, FaInstagram } from 'react-icons/fa';
 import Link from './link';
-import styled from "styled-components"
-
-const Footer = styled.footer`
-  padding: 3rem 0;
-  background: #f8f9fa;
-  a, a:hover {
-    color: inherit;
-  }
-  ul {
-    color: rgba(0, 0, 0, 0.5);
-    -webkit-padding-start: 0;
-    padding: 0;
-    & > li {
-      list-style: none;
-      a, a:hover {
-        color: inherit;
-      }
-    }
-  }
-`
 
 let SocialLink = ({Icon}) => (
   <Link to="/" className="mr-2">
@@ -38,7 +18,7 @@ let FooterLink = ({to, children}) => (
 )
 
 export default () => (
-  <Footer>
+  <footer className="py-5 bg-light">
     <Container>
       <Row>
         <Col>
@@ -54,9 +34,9 @@ export default () => (
           </ul>
         </Col>
         <Col>
-          <h5>Company</h5>
+          <h5>Address</h5>
           <ul>
-            <FooterLink to="/">Item</FooterLink>
+            <FooterLink to="/contact">2561 Wigwam Parkway<br />Henderson, NV 89074</FooterLink>
           </ul>
         </Col>
         <Col>
@@ -66,5 +46,5 @@ export default () => (
         </Col>
       </Row>
     </Container>
-  </Footer>
+  </footer>
 )

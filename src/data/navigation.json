@@ -1,9 +1,11 @@
 [
-  {"name": "Contact", "url": "/contact"},
-  {"name": "GitHub", "url": "https://github.com/jeremylynch/gatsby-strapi-starter"},
-  {"name": "Options", "url": "", "dropdownItems": [
-    {"name": "Option 1", "url": "/test"},
-    {"name": "Option 2", "url": "/test"},
-    {"name": "Reset", "url": "/test"}
+    {"name": "Quote", "url": "/"},
+    {"name": "Contact", "url": "/contact"},
+    {"name": "About", "url": "/about"},
+    {"name": "Social", "url": "", "dropdownItems": [
+        {"name": "Twitter", "url": "https://twitter.com/wequotenevada"},
+        {"name": "Instagram", "url": "https://instagram.com/wequotenevada"},
+        {"name": "Facebook", "url": "https://facebooks.com/wequotenevada"},
+        {"name": "LinkedIn", "url": "https://linkedin.com/wequotenevada"}
   ]}
 ]
