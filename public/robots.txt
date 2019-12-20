@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://gatsby-strapi-starter.netlify.com/sitemap.xml
-Host: https://gatsby-strapi-starter.netlify.com
