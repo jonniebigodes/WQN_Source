@@ -91,27 +91,43 @@ export default () => (
         </Row>
         <Row form>
             <Col md={5}>
-                <Label class="col control-label" for="contactMethod">How would you like to be contacted?</label>
+                <Label for="contactMethod">How would you like to be contacted?</Label>
             </Col>
             <Col md={7}>
-                <Label check>
-                    <Input type="radio" name="contactMethod" id="contactMethod-email" value="email"
-                        onchange='require("phoneGroup","phone",false);document.getElementById("phone").value =""; '
-                        required="" data-parsley-errors-container="#contactMethod_error">
-                        Email
-                </Label>
-                <Label check>
-                    <Input type="radio" name="contactMethod" id="contactMethod-phone" value="phone"
-                        onchange='require("phoneGroup","phone",true)' checked>
-                        Phone Call
-                </Label>
+                <FormGroup check inline>
+                    <Label check>
+                        <Input type="radio" name="contactMethod" id="contactMethod-email" value="email"
+                            onchange='require("phoneGroup","phone",false);document.getElementById("phone").value ="";' required="" data-parsley-errors-container="#contactMethod_error" /> Email
+                    </Label>
+                </FormGroup>
+                <FormGroup check inline>
+                    <Label check>
+                        <Input type="radio" name="contactMethod" id="contactMethod-phone" value="phone" onchange='require("phoneGroup","phone",true)' checked /> Phone Call
+                    </Label>
+                </FormGroup>
             </Col>
         </Row>
-
-    <NormalField name="Full Name" />
-    <NormalField name="Email" />
-    <NormalField name="Phone Number" />
-    <NormalField name="Comments" type="textarea" />
-    <Button>Submit</Button>
+        <Row form>
+            <Col md={5}>
+                <Label for="phone">What's your phone number?</Label>
+            </Col>
+            <Col md={7}>
+                <FormGroup>
+                        <Input 
+                        id="phone" name="phone" type="text"
+                        placeholder="702-555-5555"
+                        class="form-control input-md"
+                        data-parsley-pattern="^[+]?[1]?[-.\s]?[(]?[2-9]\d{2}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$" 
+                        required
+                        data-parsley-required-message="Must Be a valid US Phone Number" onblur="normalizePhone(this);" />
+                    
+                </FormGroup>
+            </Col>
+        </Row>
+        <Row form>
+            <Col md={12} className="text-center">
+                <Button id="submit" name="submit" value="validate">Get a Quote!</Button>
+            </Col>
+        </Row>
   </form >
 )
