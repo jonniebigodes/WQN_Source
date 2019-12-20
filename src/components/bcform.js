@@ -131,5 +131,5 @@ export default () => (
                 <Button id="submit" name="submit" value="validate">Get a Quote!</Button>
             </Col>
         </Row>
-  </form >
+    </form >
 )
