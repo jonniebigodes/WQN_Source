@@ -6,7 +6,7 @@ import styled from "styled-components"
 const SliderContainer = styled.div`
   background: linear-gradient(210deg,#943cff 0%,#dd45d3 40.13%,#fc9a57 90%);
   color: white;
-  padding: 10rem 0;
+  padding: 3rem 0;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
 `
 
@@ -42,20 +42,20 @@ export default () => {
       <Slider {...settings}>
         <div>
           <div className="text-center">
-            <h1>Personal Service</h1>
-            <p>One on One Consultation with Insurance Pros</p>
+            <h1 className="h1-slider">Personal Service</h1>
+            <p className="p-slider">One on One Consultation with Insurance Pros</p>
           </div>
         </div>
         <div>
           <div className="text-center">
-            <h1>Compare the Best</h1>
-            <p>We'll Find you the Best AND Cheapest Options</p>
+            <h1 className="h1-slider">Compare the Best</h1>
+            <p className="p-slider">We'll Find you the Best AND Cheapest Options</p>
           </div>
         </div>
         <div>
           <div className="text-center">
-            <h1>Insurance We Love</h1>
-            <p>We Only Sell Insurance we Believe In</p>
+            <h1 className="h1-slider">Insurance We Love</h1>
+            <p className="p-slider">We Only Sell Insurance we Believe In</p>
           </div>
         </div>
       </Slider>
