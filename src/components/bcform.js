@@ -2,8 +2,6 @@ import React from 'react'
 import {NormalField} from 'reactstrap-form-fields'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-
-
 export default () => (
     <form>
         <Row form>
