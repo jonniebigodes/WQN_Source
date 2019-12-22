@@ -1,12 +1,13 @@
 import React from "react"
 
 import { Container, Row, Col } from 'reactstrap'
-import Link from '../components/link'
+//import Link from '../components/link'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { FaGithub } from 'react-icons/fa'
-import Form from '../components/form'
-import BCForm from '../components/bcform'
+//import { FaGithub } from 'react-icons/fa'
+//import Form from '../components/form'
+//import BCForm from '../components/bcform'
+import BCForm from '../components/bcformfuck'
 import Slider from '../components/slider'
 import Box from '../components/box'
 import { FaHome } from 'react-icons/fa';

@@ -1,6 +1,6 @@
 [
-    {"name": "Quote", "url": ""},
-    {"name": "Contact", "url": "contact"},
+    {"name": "Quote", "url": "/"},
+    {"name": "Contact", "url": "/contact"},
     {"name": "Social", "url": "", "dropdownItems": [
         {"name": "Twitter", "url": "https://twitter.com/wequotenevada"},
         {"name": "Instagram", "url": "https://instagram.com/wequotenevada"},

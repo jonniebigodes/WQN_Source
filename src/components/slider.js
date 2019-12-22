@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import { useStaticQuery, graphql } from "gatsby"
+//import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
 const SliderContainer = styled.div`
@@ -11,76 +11,76 @@ const SliderContainer = styled.div`
 `
 
 export default () => {
-  var settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed:300,
-    autoplaySpeed: 4000
-    // dots: true,
-    // infinite: true,
-    // speed: 500,
-    // slidesToShow: 1,
-    // slidesToScroll: 1
-  };
-  const sideMetadata = useStaticQuery(graphql`
-    query TitleQuery {
-      site {
-        siteMetadata {
-          title
-          author
-        }
-      }
-    }
-  `)
+    var settings = {
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        speed: 300,
+        autoplaySpeed: 4000
+        // dots: true,
+        // infinite: true,
+        // speed: 500,
+        // slidesToShow: 1,
+        // slidesToScroll: 1
+    };
+//     const sideMetadata = useStaticQuery(graphql`
+//     query TitleQuery {
+//       site {
+//         siteMetadata {
+//           title
+//           author
+//         }
+//       }
+//     }
+//   `)
 
-//   let {title, author} = sideMetadata.site.siteMetadata
-  return (
-      <SliderContainer>
-      <Slider {...settings}>
-        <div>
-          <div className="text-center">
-            <h1 className="h1-slider">Personal Service</h1>
-            <p className="p-slider">One on One Consultation with Insurance Pros</p>
-          </div>
-        </div>
-        <div>
-          <div className="text-center">
-            <h1 className="h1-slider">Compare the Best</h1>
-            <p className="p-slider">We'll Find you the Best AND Cheapest Options</p>
-          </div>
-        </div>
-        <div>
-          <div className="text-center">
-            <h1 className="h1-slider">Insurance We Love</h1>
-            <p className="p-slider">We Only Sell Insurance we Believe In</p>
-          </div>
-        </div>
-      </Slider>
-      </SliderContainer>
-    // <SliderContainer>
-    //   <Slider {...settings}>
-    //     <div>
-    //       <div className="text-center">
-    //         <h1>{title}</h1>
-    //         <p>By {author}</p>
-    //       </div>
-    //     </div>
-    //     <div>
-    //       <div className="text-center">
-    //         <h1>{title}</h1>
-    //         <p>By {author}</p>
-    //       </div>
-    //     </div>
-    //     <div>
-    //       <div className="text-center">
-    //         <h1>{title}</h1>
-    //         <p>By {author}</p>
-    //       </div>
-    //     </div>
-    //   </Slider>
-    // </SliderContainer>
-  )
+    //   let {title, author} = sideMetadata.site.siteMetadata
+    return (
+        <SliderContainer>
+            <Slider {...settings}>
+                <div>
+                    <div className="text-center">
+                        <h1 className="h1-slider">Personal Service</h1>
+                        <p className="p-slider">One on One Consultation with Insurance Pros</p>
+                    </div>
+                </div>
+                <div>
+                    <div className="text-center">
+                        <h1 className="h1-slider">Compare the Best</h1>
+                        <p className="p-slider">We'll Find you the Best AND Cheapest Options</p>
+                    </div>
+                </div>
+                <div>
+                    <div className="text-center">
+                        <h1 className="h1-slider">Insurance We Love</h1>
+                        <p className="p-slider">We Only Sell Insurance we Believe In</p>
+                    </div>
+                </div>
+            </Slider>
+        </SliderContainer>
+        // <SliderContainer>
+        //   <Slider {...settings}>
+        //     <div>
+        //       <div className="text-center">
+        //         <h1>{title}</h1>
+        //         <p>By {author}</p>
+        //       </div>
+        //     </div>
+        //     <div>
+        //       <div className="text-center">
+        //         <h1>{title}</h1>
+        //         <p>By {author}</p>
+        //       </div>
+        //     </div>
+        //     <div>
+        //       <div className="text-center">
+        //         <h1>{title}</h1>
+        //         <p>By {author}</p>
+        //       </div>
+        //     </div>
+        //   </Slider>
+        // </SliderContainer>
+    )
 }
