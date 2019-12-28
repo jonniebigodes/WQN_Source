@@ -19,24 +19,8 @@ export default () => {
         autoplay: true,
         speed: 300,
         autoplaySpeed: 4000
-        // dots: true,
-        // infinite: true,
-        // speed: 500,
-        // slidesToShow: 1,
-        // slidesToScroll: 1
     };
-//     const sideMetadata = useStaticQuery(graphql`
-//     query TitleQuery {
-//       site {
-//         siteMetadata {
-//           title
-//           author
-//         }
-//       }
-//     }
-//   `)
 
-    //   let {title, author} = sideMetadata.site.siteMetadata
     return (
         <SliderContainer>
             <Slider {...settings}>
@@ -60,27 +44,5 @@ export default () => {
                 </div>
             </Slider>
         </SliderContainer>
-        // <SliderContainer>
-        //   <Slider {...settings}>
-        //     <div>
-        //       <div className="text-center">
-        //         <h1>{title}</h1>
-        //         <p>By {author}</p>
-        //       </div>
-        //     </div>
-        //     <div>
-        //       <div className="text-center">
-        //         <h1>{title}</h1>
-        //         <p>By {author}</p>
-        //       </div>
-        //     </div>
-        //     <div>
-        //       <div className="text-center">
-        //         <h1>{title}</h1>
-        //         <p>By {author}</p>
-        //       </div>
-        //     </div>
-        //   </Slider>
-        // </SliderContainer>
     )
 }

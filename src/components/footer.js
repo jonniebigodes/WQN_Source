@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container, Row, Col} from 'reactstrap'
-import { FaFacebookSquare, FaInstagram } from 'react-icons/fa';
+import { FaFacebookSquare, FaInstagram, FaLinkedin, FaTwitterSquare } from 'react-icons/fa';
 import Link from './link';
 
 let SocialLink = ({Icon}) => (
@@ -22,15 +22,15 @@ export default () => (
     <Container>
       <Row>
         <Col>
-          <h5>Features</h5>
+          <h5>Email</h5>
           <ul>
-            <FooterLink to="/">Item</FooterLink>
+            <FooterLink to="/contact">contact@WeQuoteNevada.com</FooterLink>
           </ul>
         </Col>
         <Col>
-          <h5>Resources</h5>
+          <h5>Phone</h5>
           <ul>
-            <FooterLink to="/">Item</FooterLink>
+            <FooterLink to="/contact">702-344-2400</FooterLink>
           </ul>
         </Col>
         <Col>
@@ -40,9 +40,11 @@ export default () => (
           </ul>
         </Col>
         <Col>
-          <h5>Contact Us</h5>
+          <h5>Social</h5>
           <SocialLink Icon={FaFacebookSquare}/>
           <SocialLink Icon={FaInstagram}/>
+          <SocialLink Icon={FaTwitterSquare}/>
+          <SocialLink Icon={FaLinkedin}/>
         </Col>
       </Row>
     </Container>

@@ -15,7 +15,7 @@ const Header = (props) => {
 
   return (
     <Navbar color="light" light expand="md">
-      <Link to="" className="navbar-brand">{props.siteTitle}</Link>
+      <Link to="/" className="navbar-brand">{props.siteTitle}</Link>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Navigation json={navigation} link={Link}/>
