@@ -11,7 +11,7 @@ module.exports = {
         fax: `Um...it's 2020...`,
         address: `2561 Wigwam Parkway\nHenderson, NV 89074`,
         email: `contact@WeQuoteNevada.com`,
-        pathPrefix: "/WQN",
+        //pathPrefix: "/WQN",
 
     },
     plugins: [
