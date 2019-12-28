@@ -56,7 +56,7 @@ function regToggle() {
     function success(response) {
         console.log('Success!', response);
         // changeSubmit("It Worked!",true);
-        alert("It fucking worked!");
+        alert("Your Submission was Successful! We'll talk to you soon!");
         // setTimeout(() => {
         //     hideAllMessages();
         //     main.classList.add('hidden')
@@ -69,7 +69,7 @@ function regToggle() {
     function fuckup(error) {
         console.error('Error!', error.message);
         // changeSubmit("Try Again",false);
-        alert("Something Fucked up");
+        alert("Something Screwed Up. Please Try Again.");
         // setTimeout(() => {
         //     hideAllMessages();
         //     errorMessage.classList.remove('hidden')

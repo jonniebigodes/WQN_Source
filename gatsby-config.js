@@ -6,13 +6,12 @@ module.exports = {
         title: `We Quote Nevada`,
         description: `The Best Insurance Agency in Nevada`,
         author: `TBC`,
-        siteUrl: `https://wequotenevada.com`,
+        siteUrl: `https://doomd.github.io`,
         phone: `702-344-2400`,
         fax: `Um...it's 2020...`,
         address: `2561 Wigwam Parkway\nHenderson, NV 89074`,
         email: `contact@WeQuoteNevada.com`,
-        pathPrefix: `/WQN`,
-
+        //pathPrefix: `WQN`,
     },
     plugins: [
         `gatsby-plugin-react-helmet`,

@@ -51,9 +51,9 @@
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve -H 0.0.0.0 --prefix-paths -o",
+    "serve": "gatsby serve -H 0.0.0.0 -o",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public -b master -r https://github.com/Doomd/WQN.git"
+    "deploy": "gatsby build && gh-pages -d public -b master -r https://github.com/Doomd/WQN.git"
   },
   "repository": {
     "type": "git",

@@ -10,11 +10,13 @@ import Slider from '../components/slider'
 import Box from '../components/box'
 import { FaHome } from 'react-icons/fa';
 
-let Service = ({ title, Icon = FaHome }) => (
+let Service = ({ title, desc, Ri }) => (
+        
     <Col>
         <Box>
-            <Icon size={30} />
-            <h4 className="mt-3">{title}</h4>
+            <Ri size={30} />
+            <h4 className="mt-3">{title}</h44>
+            <p className="mt-3">{desc}</p>
         </Box>
     </Col>
 )
@@ -26,9 +28,9 @@ export default () => (
         <Container className="py-5 how-it-works">
             <h2 className="text-center mb-4">How It Works With Us</h2>
             <Row>
-                <Service title="Build a Profile" />
-                <Service title="Compare Insurance Providers" />
-                <Service title="Compare Quotes" />
+                <Service title="Build a Profile" desc="Tell Us A Little Bit About Yourself and Your Auto" Ri="FaHome" />
+                <Service title="Compare Insurance Providers" desc="We Shop Our Carriers and Provide You With a Quote Based on Your Profile" Ri="FaHome" />
+                <Service title="Compare Quotes" desc="We Can Easily Compare Quotes Over the Phone, Through Email, or in the Office" Ri="FaHome" />
             </Row>
         </Container>
         {/* 
