@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-strapi-starter",
+  "name": "we-quote-nevada",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Quickly get an Insurance Quote",
   "version": "0.1.0",
-  "author": "Jeremy Lynch",
+  "author": "BC",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.6",
     "bootstrap": "^4.3.1",

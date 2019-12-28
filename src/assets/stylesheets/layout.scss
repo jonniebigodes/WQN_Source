@@ -109,3 +109,16 @@ footer > div > div > div > ul > li {
 .p-slider {
     font-size: 4vw !important;
 }
+.form_error {
+    color: red;
+    padding:2px 0 0 13px;
+}
+
+.form-group {
+    // border-bottom: 1px solid lightgray;
+    padding:0 0 15px 0;
+}
+
+.hidden {
+    display: none !important; 
+}

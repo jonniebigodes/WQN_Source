@@ -1,58 +1,30 @@
 import React from 'react'
 //import {NormalField} from 'reactstrap-form-fields'
 //import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-//import ReactDOM from "react-dom";
 import useForm from "react-hook-form"
 
-
-export default function App(props) {
+export default function App() {
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec'
-    const { register, handleSubmit, errors } = useForm({
-        mode: "onBlur"
-    });
-    //const moreDetail = watch("contactMethod", props.contactMethod);
+    const { register, handleSubmit, errors } = useForm()
     //const onSubmit = data => console.log(data)
     const onSubmit = (data, e) => {
-        e.preventDefault();
         console.log('Submit event', e)
-        //alert(JSON.stringify(data))
+        alert(JSON.stringify(data))
         var form_data = new FormData();
-        for (var key in data) {
-            form_data.append(key, data[key]);
-        }
-        fetch(scriptURL, { method: 'POST', body: form_data })
-            .then(response => success(response))
-            .catch(error => fuckup(error))
+            for ( var key in data ) {
+                form_data.append(key, data[key]);
+            }
+        fetch(scriptURL, { method: 'POST', body: form_data})
+        .then(response => success(response))
+        .catch(error => fuckup(error))
     };
 
-/*
-    function changeSubmit(message, disable) {
-        const button = document.getElementById('submit');
-        disable ? button.disabled = true : button.disabled = false;
-        button.innerHTML = message;
-    }
-*/
-    /*
-    function buzzOff(target){
-        //event.preventDefault();
-        //alert("buzz")
-        alert(target);
-        const targ = document.getElementById(target)
-        const test = document.querySelector('.test')
-        test.classList.remove('hidden')
-    }
-*/
-/* 
-function regToggle() {
-        alert(this);
-        //const button = document.getElementById('testbut');
-        //var butVal = button.innerHTML;
-        //alert(butVal);
-        //butVal == "Register" ? button.innerHTML = "Unregister" : button.innerHTML = "Register";
-        //disable ? button.disabled = true : button.disabled = false;
-        //button.innerHTML = message;
-    }
-*/
+// function changeSubmit(message,disable) {
+//     const button = document.getElementById('submit');
+//     disable ? button.disabled = true : button.disabled = false;
+//     button.innerHTML = message;
+// }
+
     function success(response) {
         console.log('Success!', response);
         // changeSubmit("It Worked!",true);
@@ -65,7 +37,7 @@ function regToggle() {
         //     //loading.classList.add('hidden')
         // }, 500)
     }
-
+    
     function fuckup(error) {
         console.error('Error!', error.message);
         // changeSubmit("Try Again",false);
@@ -81,68 +53,68 @@ function regToggle() {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
                 <div className="row">
-
+                    
                     <div className="col">
                         <label htmlFor="email" hidden>Email</label>
-                        <input
-                            id="email" name="email" type="email" placeholder="your@emailaddress.com" className="form-control input-md"
-                            ref={register({ required: true, pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/ })}
+                        <input 
+                            id="email" name="email" type="email" placeholder="your@emailaddress.com" className="form-control input-md" 
+                            ref={register({required:true, pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/ })} 
                         />
                         {errors.email && <div className="form_error">Email is required</div>}
                     </div>
                 </div>
             </div>
-
+        
             <div className="form-group">
                 <div className="row">
-
+                    
                     <div className="col-md-5">
                         <label htmlFor="firstName" hidden>First Name</label>
-                        <input
+                        <input 
                             id="firstName" name="firstName" type="text" placeholder="First Name"
-                            className="form-control input-md" ref={register({ required: true })}
+                            className="form-control input-md" ref={register({required:true})}
                         />
                         {errors.firstName && <div className="form_error">First Name is required</div>}
                     </div>
-
+                    
                     <div className="col">
                         <label htmlFor="lastName" hidden>Last Name</label>
-                        <input
+                        <input 
                             id="lastName" name="lastName" type="text" placeholder="Last Name" className="form-control input-md"
-                            ref={register({ required: true })}
+                            ref={register({required:true})}
                         />
                         {errors.lastName && <div className="form_error">Last Name is required</div>}
 
                     </div>
                 </div>
             </div>
-
+        
             <div className="form-group">
                 <div className="row">
                     <label className="col-md-5 control-label" htmlFor="vehicles">How many vehicles do you own?</label>
                     <div className="col">
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-0" value="1"
+                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-0" value="1" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="vehicles-0">1</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-1" value="2"
+                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-1" value="2" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="vehicles-1">2</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-2" value="3"
+                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-2" value="3" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="vehicles-2">3</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-3" value="4"
+                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-3" value="4" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="vehicles-3">4</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-4" value="5"
+                            <input className="form-check-input" type="radio" name="vehicles" id="vehicles-4" value="5" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="vehicles-4">5+</label>
                         </div>
@@ -179,22 +151,22 @@ function regToggle() {
                     </div>
                     <div className="col">
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="interest" id="interest-0" value="save money"
+                            <input className="form-check-input" type="radio" name="interest" id="interest-0" value="save money" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="interest-0">I want to save money on insurance.</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="interest" id="interest-1" value="better insurance"
+                            <input className="form-check-input" type="radio" name="interest" id="interest-1" value="better insurance" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="interest-1">I want better insurance.</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="interest" id="interest-2" value="personalized service"
+                            <input className="form-check-input" type="radio" name="interest" id="interest-2" value="personalized service" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="interest-2">I'm want personalized service.</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="interest" id="interest-3" value="just curious"
+                            <input className="form-check-input" type="radio" name="interest" id="interest-3" value="just curious" 
                                 ref={register({ required: true })} />
                             <label className="form-check-label" htmlFor="interest-3">I'm just curious.</label>
                         </div>
@@ -223,11 +195,7 @@ function regToggle() {
                     </div>
                 </div>
             </div>
-            <div className="test hidden" id="test">
-                <div>
-                    <h1>fuck!</h1>
-                </div>
-            </div>
+
             <div className="form-group" id="phoneGroup">
                 <div className="row">
                     <div className="col-md-5">
@@ -235,48 +203,27 @@ function regToggle() {
                     </div>
                     <div className="col">
                         <input id="phone" name="phone" type="text" placeholder="702-555-5555" className="form-control input-md"
-                            ref={register({ required: true, pattern: /^([+]?[1]?[-.\s]?)([(]?)([2-9]\d{2})([)]?[-.\s]?)(\d{3})([-.\s]?)(\d{4})$/ })}
-                            onBlur={e => {
-                                const value = e.target.value;
-                                const phoneRegex = /^([+]?[1]?[-.\s]?)([(]?)([2-9]\d{2})([)]?[-.\s]?)(\d{3})([-.\s]?)(\d{4})$/;
-                                if (phoneRegex.test(value)) {
-                                    var normalizedNum = value.replace(phoneRegex, "$3-$5-$7");
-                                    //alert("The formatted Phone Number is: " + normalizedNum);
-                                    e.target.value = normalizedNum;
-                                } else {
-                                    //alert("phone number wasn't valid! (" + normalizedNum + ")");
-                                }
-                            }}
-                        />
+                            ref={register({ required: true, pattern: /^([+]?[1]?[-.\s]?)([(]?)([2-9]\d{2})([)]?[-.\s]?)(\d{3})([-.\s]?)(\d{4})$/ })} />
                         {errors.phone && <div className="form_error">Please Enter a valid US phone number</div>}
                     </div>
-
+                    
                 </div>
             </div>
 
             <div className="form-group form-group-last">
                 <div className="row">
                     <div className="col text-center">
-                        <button id="submit" name="submit" className="btn btn-primary" type="submit">Get a Quote!</button>
+                        <button id="submit" name="submit" className="btn btn-primary" type="button" value="validate">Get a Quote!</button>
                     </div>
                 </div>
             </div>
-{/*
-            <div className="form-group">
-                <div className="row">
-                    <div className="col text-center">
-                        <button id="testbut" name="testbut" className="btn btn-primary" type="button"
-                            onClick={fuckOff}>Test</button>
-                    </div>
-                </div>
+        
+        <div className="loading js-loading hidden">
+            <div className="loading-spinner">
+                <svg>
+                    <circle cx="25" cy="25" r="20" fill="none" strokeWidth="2" strokeMiterlimit="10" /></svg>
             </div>
-*/}
-            <div className="loading js-loading hidden">
-                <div className="loading-spinner">
-                    <svg>
-                        <circle cx="25" cy="25" r="20" fill="none" strokeWidth="2" strokeMiterlimit="10" /></svg>
-                </div>
-            </div>
-        </form>
+        </div>
+    </form>
     )
 }

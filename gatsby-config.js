@@ -3,9 +3,9 @@ let gtm = ''
 
 module.exports = {
     siteMetadata: {
-        title: `We Quote Nevada 4`,
+        title: `We Quote Nevada`,
         description: `The Best Insurance Agency in Nevada`,
-        author: `Ted`,
+        author: `TBC`,
         siteUrl: `https://wequotenevada.com`,
         phone: `702-344-2400`,
         fax: `Um...it's 2020...`,
