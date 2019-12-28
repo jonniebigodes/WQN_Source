@@ -8,19 +8,34 @@ import SEO from "../components/seo"
 import BCForm from '../components/bcformfuck'
 import Slider from '../components/slider'
 import Box from '../components/box'
-import { FaHome } from 'react-icons/fa';
+import { FaFingerprint, FaCommentDollar, FaCheckDouble } from 'react-icons/fa';
 
+
+function Service(props) {
+    //alert(props.ri)
+    const Icon = props.ri;
+    return (
+        <Col>
+            <Box>
+                <Icon size={30} />
+                <h4 className="mt-3">{props.title}</h4>
+                <p className="mt-3">{props.desc}</p>
+            </Box>
+        </Col>
+    )
+}
+/*
 let Service = ({ title, desc, Ri }) => (
         
     <Col>
         <Box>
             <Ri size={30} />
-            <h4 className="mt-3">{title}</h44>
+            <h4 className="mt-3">{title}</h4>
             <p className="mt-3">{desc}</p>
         </Box>
     </Col>
 )
-
+*/
 export default () => (
     <Layout>
         <SEO title="Home" />
@@ -28,9 +43,9 @@ export default () => (
         <Container className="py-5 how-it-works">
             <h2 className="text-center mb-4">How It Works With Us</h2>
             <Row>
-                <Service title="Build a Profile" desc="Tell Us A Little Bit About Yourself and Your Auto" Ri="FaHome" />
-                <Service title="Compare Insurance Providers" desc="We Shop Our Carriers and Provide You With a Quote Based on Your Profile" Ri="FaHome" />
-                <Service title="Compare Quotes" desc="We Can Easily Compare Quotes Over the Phone, Through Email, or in the Office" Ri="FaHome" />
+                <Service title="Build a Profile" desc="Tell Us A Little Bit About Yourself and Your Auto" ri={FaFingerprint} />
+                <Service title="Compare Insurance Providers" desc="We Shop Our Carriers and Provide You With a Quote Based on Your Profile" ri={FaCommentDollar} />
+                <Service title="Compare Quotes" desc="We Can Easily Compare Quotes Over the Phone, Through Email, or in the Office" ri={FaCheckDouble} />
             </Row>
         </Container>
         {/* 
