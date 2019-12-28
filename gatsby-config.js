@@ -1,4 +1,4 @@
-let facebook_pixel = ''
+//let facebook_pixel = ''
 let gtm = ''
 
 module.exports = {
@@ -31,12 +31,14 @@ module.exports = {
                 includeInDevelopment: false
             }
         },
+        /*
         {
             resolve: `gatsby-plugin-facebook-pixel`,
             options: {
                 pixelId: facebook_pixel,
             }
         },
+        */
         {
             resolve: `gatsby-plugin-favicon`,
             options: {
