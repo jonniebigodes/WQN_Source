@@ -6,7 +6,7 @@ import useForm from "react-hook-form"
 
 
 export default function App(props) {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec'
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwTay7c2eGmweCIRfj6lzMloYt7oH0toBcueXRVnQ/exec'
     const { register, handleSubmit, errors } = useForm({
         mode: "onBlur"
     });
