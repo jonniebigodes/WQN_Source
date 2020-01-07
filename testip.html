@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        var ip = "8.8.8.8";
+        var api_key = "at_86Fypk0RXhS1gJXaJququtDQD1jkM";
+        $(function () {
+            $.ajax({
+                url: "https://geo.ipify.org/api/v1",
+                dataType: "jsonp",
+                data: { apiKey: api_key, ipAddress: ip },
+                success: function (data) {
+                    $("body").append("<pre>" + JSON.stringify(data, "", 2) + "</pre>");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

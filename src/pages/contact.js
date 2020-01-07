@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col, Container } from 'reactstrap'
 import Link from '../components/link'
 import Layout from '../components/layout'
-import ContactForm from '../components/bcformfuck'
+import ContactForm from '../components/bcform1'
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFax } from 'react-icons/fa'
 import Styled from 'styled-components'
 

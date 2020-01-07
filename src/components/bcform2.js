@@ -1,12 +1,10 @@
 import React from 'react'
-//import {NormalField} from 'reactstrap-form-fields'
-//import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-//import ReactDOM from "react-dom";
 import useForm from "react-hook-form"
 
 
 export default function App(props) {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwTay7c2eGmweCIRfj6lzMloYt7oH0toBcueXRVnQ/exec'
+    //const scriptURL = 'https://script.google.com/macros/s/AKfycbwTay7c2eGmweCIRfj6lzMloYt7oH0toBcueXRVnQ/exec' //Production URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
     const { register, handleSubmit, errors } = useForm({
         mode: "onBlur"
     });
@@ -25,34 +23,6 @@ export default function App(props) {
             .catch(error => fuckup(error))
     };
 
-/*
-    function changeSubmit(message, disable) {
-        const button = document.getElementById('submit');
-        disable ? button.disabled = true : button.disabled = false;
-        button.innerHTML = message;
-    }
-*/
-    /*
-    function buzzOff(target){
-        //event.preventDefault();
-        //alert("buzz")
-        alert(target);
-        const targ = document.getElementById(target)
-        const test = document.querySelector('.test')
-        test.classList.remove('hidden')
-    }
-*/
-/* 
-function regToggle() {
-        alert(this);
-        //const button = document.getElementById('testbut');
-        //var butVal = button.innerHTML;
-        //alert(butVal);
-        //butVal == "Register" ? button.innerHTML = "Unregister" : button.innerHTML = "Register";
-        //disable ? button.disabled = true : button.disabled = false;
-        //button.innerHTML = message;
-    }
-*/
     function success(response) {
         console.log('Success!', response);
         // changeSubmit("It Worked!",true);

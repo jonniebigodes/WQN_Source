@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 //import { FaGithub } from 'react-icons/fa'
-import BCForm from '../components/bcformfuck'
+import BCForm from '../components/bcform1'
 import Slider from '../components/slider'
 import Box from '../components/box'
 import { FaFingerprint, FaCommentDollar, FaCheckDouble } from 'react-icons/fa';
