@@ -1,57 +1,24 @@
-import React from 'react'
-import useForm from "react-hook-form"
+import React from "react";
+import { useForm } from "react-hook-form";
+import { withRouter } from "react-router-dom";
+import { useStateMachine } from "little-state-machine";
+import updateAction from "./updateAction";
 
-
-export default function App(props) {
-    //const scriptURL = 'https://script.google.com/macros/s/AKfycbwTay7c2eGmweCIRfj6lzMloYt7oH0toBcueXRVnQ/exec' //Production URL
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
-    const { register, handleSubmit, errors } = useForm({
-        mode: "onBlur"
-    });
-    //const moreDetail = watch("contactMethod", props.contactMethod);
-    //const onSubmit = data => console.log(data)
-    const onSubmit = (data, e) => {
-        e.preventDefault();
-        console.log('Submit event', e)
-        //alert(JSON.stringify(data))
-        var form_data = new FormData();
-        for (var key in data) {
-            form_data.append(key, data[key]);
-        }
-        fetch(scriptURL, { method: 'POST', body: form_data })
-            .then(response => success(response))
-            .catch(error => fuckup(error))
+const Step1 = props => {
+    const { register, handleSubmit, errors } = useForm();
+    const { action } = useStateMachine(updateAction);
+    const onSubmit = data => {
+        action(data);
+        props.history.push("./Step2");
     };
 
-    function success(response) {
-        console.log('Success!', response);
-        // changeSubmit("It Worked!",true);
-        alert("Your Submission was Successful! We'll talk to you soon!");
-        // setTimeout(() => {
-        //     hideAllMessages();
-        //     main.classList.add('hidden')
-        //     successMessage.classList.remove('hidden')
-        //     thanksOL.classList.remove('hidden')
-        //     //loading.classList.add('hidden')
-        // }, 500)
-    }
-
-    function fuckup(error) {
-        console.error('Error!', error.message);
-        // changeSubmit("Try Again",false);
-        alert("Something Screwed Up. Please Try Again.");
-        // setTimeout(() => {
-        //     hideAllMessages();
-        //     errorMessage.classList.remove('hidden')
-        //     //loading.classList.add('hidden')
-        // }, 500)
-    }
     return (
 
         <form onSubmit={handleSubmit(onSubmit)}>
+            <h2>Step 1</h2>
             <div className="form-group">
-                <div className="row">
 
+                <div className="row">
                     <div className="col">
                         <label htmlFor="email" hidden>Email</label>
                         <input
@@ -250,3 +217,5 @@ export default function App(props) {
         </form>
     )
 }
+
+export default withRouter(Step1);

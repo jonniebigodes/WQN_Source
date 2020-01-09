@@ -1,23 +1,5 @@
 import React from 'react'
-//import {NormalField} from 'reactstrap-form-fields'
-//import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-//import ReactDOM from "react-dom";
 import useForm from "react-hook-form"
-
-//ipify from https://www.npmjs.com/package/ipify
-var http = require('http');
-
-var ip = '8.8.8.8';
-var api_key = 'at_86Fypk0RXhS1gJXaJququtDQD1jkM';
-var api_url = 'https://geo.ipify.org/api/v1?';
-
-var url = api_url + 'apiKey=' + api_key + '&ipAddress=' + ip;
-
-http.get(url, function(response) {
-    var str = '';
-    response.on('data', function(chunk) { str += chunk; });
-    response.on('end', function() { console.log(str); });
-}).end();
 
 export default function App(props) {
     //const scriptURL = 'https://script.google.com/macros/s/AKfycbwTay7c2eGmweCIRfj6lzMloYt7oH0toBcueXRVnQ/exec' //Production URL
@@ -67,6 +49,7 @@ export default function App(props) {
 
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
+
                 <div className="row">
                     <div className="col">
                         <label htmlFor="email" hidden>Email</label>
