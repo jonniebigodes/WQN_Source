@@ -18,16 +18,28 @@ const Step1 = props => {
 
     //console.log(JSON.stringify(formState, null, 2));
 
-    const onSubmit = (data, e) => {
+    const onSubmit = (payload, e) => {
         e.preventDefault();
+        action(payload)
         console.log('Submit event', e)
         //alert(JSON.stringify(data))
+
+        let allData = {
+            ...state,
+            data: {
+                ...state.data,
+                ...payload
+            }
+        };
+        allData = allData.data;
+alert(JSON.stringify(allData))
+
         var form_data = new FormData();
-        for (var key in data) {
-            form_data.append(key, data[key]);
+        for (var key in allData) {
+            form_data.append(key, allData[key]);
         }
         fetch(scriptURL, { method: 'POST', body: form_data })
-            .then(response => success(data,response))
+            .then(response => success(allData,response))
             .catch(error => fuckup(error))
     };
 
@@ -45,10 +57,10 @@ const Step1 = props => {
         //     hideShow('form-page-1', 'form-page-2');
         // }
         //React Hook Form Wizard https://codesandbox.io/s/form-wizard-pages-kkg7m
-        action(data)
+        
         props.history.push("./result")
         // changeSubmit("It Worked!",true);
-        alert("Your Submission was Successful! We'll talk to you soon!");
+        //alert("Your Submission was Successful! We'll talk to you soon!");
         // setTimeout(() => {
         //     hideAllMessages();
         //     main.classList.add('hidden')

@@ -21,7 +21,7 @@ const Step1 = props => {
     const onSubmit = (data, e) => {
         e.preventDefault();
         console.log('Submit event', e)
-        //alert(JSON.stringify(data))
+        alert(JSON.stringify(data))
         var form_data = new FormData();
         for (var key in data) {
             form_data.append(key, data[key]);
@@ -48,7 +48,7 @@ const Step1 = props => {
         action(data)
         props.history.push("./bcform2")
         // changeSubmit("It Worked!",true);
-        alert("Your Submission was Successful! We'll talk to you soon!");
+        //alert("Your Submission was Successful! We'll talk to you soon!");
         // setTimeout(() => {
         //     hideAllMessages();
         //     main.classList.add('hidden')
