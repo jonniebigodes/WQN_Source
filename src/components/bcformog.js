@@ -1,20 +1,15 @@
-import React from 'react'
-import { useForm } from "react-hook-form"
-import { withRouter } from 'react-router-dom';
-import { useStateMachine } from "little-state-machine";
-import updateAction from "./updateAction";
+import React, { useState } from 'react'
+import useForm from "react-hook-form"
 
-
-const Step1 = props => {
+export default function App(props) {
     //const scriptURL = 'https://script.google.com/macros/s/AKfycbwTay7c2eGmweCIRfj6lzMloYt7oH0toBcueXRVnQ/exec' //Production URL
     const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
     const { register, handleSubmit, formState, errors } = useForm({
         mode: "onChange"
     });
-    const { action, state } = useStateMachine(updateAction);
 
     let ready = !formState.isValid;
-    //const [theEmail, setTheEmail] = useState("");
+    const [theEmail, setTheEmail] = useState("");
 
     //console.log(JSON.stringify(formState, null, 2));
 
@@ -27,7 +22,7 @@ const Step1 = props => {
             form_data.append(key, data[key]);
         }
         fetch(scriptURL, { method: 'POST', body: form_data })
-            .then(response => success(data,response))
+            .then(response => success(response))
             .catch(error => fuckup(error))
     };
 
@@ -37,16 +32,13 @@ const Step1 = props => {
         hideme.classList.add('hidden');
         showme.classList.remove('hidden');
     }
-    //let page = 1;
-    function success(data,response) {
+    let page = 1;
+    function success(response) {
         console.log('Success!', response);
-        // page = page + 1;
-        // if (page > 1) {
-        //     hideShow('form-page-1', 'form-page-2');
-        // }
-        //React Hook Form Wizard https://codesandbox.io/s/form-wizard-pages-kkg7m
-        action(data)
-        props.history.push("./bcform2")
+        page = page + 1;
+        if (page > 1) {
+            hideShow('form-page-1', 'form-page-2');
+        }
         // changeSubmit("It Worked!",true);
         alert("Your Submission was Successful! We'll talk to you soon!");
         // setTimeout(() => {
@@ -71,7 +63,7 @@ const Step1 = props => {
     return (
         <div>
             <div id="form-page-1" className="form-page-1">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} id="form-1">
                     <h2>Form Page 1</h2>
                     <div className="form-group">
                         <div className="row">
@@ -83,9 +75,7 @@ const Step1 = props => {
                                         required: true,
                                         pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
                                     })}
-                                    defaultValue={state.data.email}
-                                    //onChange={e => setTheEmail(e.target.value)}
-
+                                    onChange={e => setTheEmail(e.target.value)}
                                 />
                                 {errors.email && <div className="form_error">Please Enter a Valid Email address</div>}
                             </div>
@@ -100,7 +90,6 @@ const Step1 = props => {
                                 <input
                                     id="firstName" name="firstName" type="text" placeholder="First Name"
                                     className="form-control input-md" ref={register({ required: true })}
-                                    defaultValue={state.data.firstName}
                                 />
                                 {errors.firstName && <div className="form_error">First Name is required</div>}
                             </div>
@@ -110,7 +99,6 @@ const Step1 = props => {
                                 <input
                                     id="lastName" name="lastName" type="text" placeholder="Last Name" className="form-control input-md"
                                     ref={register({ required: true })}
-                                    defaultValue={state.data.lastName}
                                 />
                                 {errors.lastName && <div className="form_error">Last Name is required</div>}
 
@@ -251,7 +239,6 @@ const Step1 = props => {
                                             //alert("phone number wasn't valid! (" + normalizedNum + ")");
                                         }
                                     }}
-                                    defaultValue={state.data.phone}
                                 />
                                 {errors.phone && <div className="form_error">Please Enter a valid US phone number</div>}
                             </div>
@@ -272,15 +259,53 @@ const Step1 = props => {
                                 >
                                     Get a Quote!
                             </button>
-                                <button id="submit" name="submit" className="btn btn-primary" type="submit">Get a Quote!</button>
+                                <button id="submit-1" name="submit-1" className="btn btn-primary" type="submit">Get a Quote!</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            
+            <div id="form-page-2" className="form-page-2 hidden">
+                <form onSubmit={handleSubmit(onSubmit)} id="form-2">
+                    <h2>Form Page 2</h2>
+                    <div className="form-group">
+                        <div className="row">
+                            <div className="col">
+                                <label htmlFor="email2" hidden>Email</label>
+                                <input
+                                    id="email2" name="email2" type="email" placeholder="your@emailaddress.com" className="form-control input-md"
+                                    disabled="true" value={theEmail}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="row">
+                            <div className="col-md-5">
+                                <label htmlFor="dob">Date of Birth</label>
+                                <input id="dob" name="dob" type="date" placeholder="MM/DD/YYYY" className="form-control input-md"
+                                // ref={register}
+                                />
+                                {errors.dob && <div className="form_error">Please Enter a valid Date in MM/DD/YYYY format</div>}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="row">
+                            <div className="col text-center">
+                                <button id="form-nav-2" name="form-nav-2" className="btn btn-primary form-nav" type="button"
+                                    onClick={() => {
+                                        hideShow('form-page-2', 'form-page-1');
+                                    }}
+                                >
+                                    Go Back
+                            </button>
+                                <button id="submit-2" name="submit-2" className="btn btn-primary" type="submit">Get a Quote!</button>
+                            </div>
+                        </div>
+                    </div>
+                </form >
+            </div>
         </div >
     )
 }
-
-export default withRouter(Step1);
