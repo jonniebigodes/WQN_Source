@@ -49,7 +49,7 @@ export default () => (
         <div className="py-5 bcform">
             <Container>
                 <Row className="d-flex justify-content-center">
-                    <Col md={8}>
+                    <Col md={10}>
                         <h3 className="text-center">Get a Personalized Quote Today!</h3>
                         <StateMachineProvider>
                             <Router>
