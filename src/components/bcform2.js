@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { withRouter } from 'react-router-dom';
 import { useStateMachine } from "little-state-machine";
@@ -8,12 +8,17 @@ const Step2 = props => {
     //const scriptURL = 'https://script.google.com/macros/s/AKfycbwTay7c2eGmweCIRfj6lzMloYt7oH0toBcueXRVnQ/exec' //Production URL
     const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
     const { register, handleSubmit, formState, errors, watch } = useForm({
-        mode: "onChange"
+        mode: "onBlur"
     });
+    let disableSubmit = false;
+
     const numCars = watch("vehicles", props.cars);
     const numDrivers = watch("addDrivers", props.cars);
 
     const { action, state } = useStateMachine(updateAction);
+
+    const [submitBut, setsubmitBut] = useState(false);
+
 
     let ready = !formState.isValid;
     const yearPlaceholder = new Date().getFullYear();
@@ -27,6 +32,7 @@ const Step2 = props => {
     //console.log(JSON.stringify(formState, null, 2));
 
     const onSubmit = (payload, e) => {
+        disableSubmit = true;
         e.preventDefault();
         action(payload)
         console.log('Submit event', e)
@@ -64,6 +70,7 @@ const Step2 = props => {
     //let page = 1;
     function success(data, response) {
         console.log('Success!', response);
+        disableSubmit = false;
         // page = page + 1;
         // if (page > 1) {
         //     hideShow('form-page-1', 'form-page-2');
@@ -84,6 +91,7 @@ const Step2 = props => {
 
     function fuckup(error) {
         console.error('Error!', error.message);
+        disableSubmit = false;
         // changeSubmit("Try Again",false);
         alert("Something Screwed Up. Please Try Again.");
         // setTimeout(() => {
@@ -113,14 +121,14 @@ const Step2 = props => {
                                 <div className="form-check form-check-inline">
                                     <input className="form-check-input" type="radio" name="gender" id="gender-female" value="F"
                                         ref={register({ required: true })}
-                                        defaultValue={state.data.gender}
+                                        defaultChecked={state.data.gender === "F"}
                                     />
                                     <label className="form-check-label" htmlFor="gender-female">Female</label>
                                 </div>
                                 <div className="form-check form-check-inline">
                                     <input className="form-check-input" type="radio" name="gender" id="gender-male" value="M"
                                         ref={register({ required: true })}
-                                        defaultValue={state.data.gender}
+                                        defaultChecked={state.data.gender === "M"}
                                     />
                                     <label className="form-check-label" htmlFor="gender-male">Male</label>
                                 </div>
@@ -134,6 +142,8 @@ const Step2 = props => {
                                 <div className="form-check form-check-inline">
                                     <input className="form-check-input" type="radio" name="married" id="married-yes" value="Yes"
                                         ref={register({ required: true })}
+                                        defaultChecked={state.data.married === "Yes"}
+
 
                                     />
                                     <label className="form-check-label" htmlFor="married-yes">Yes</label>
@@ -141,6 +151,8 @@ const Step2 = props => {
                                 <div className="form-check form-check-inline">
                                     <input className="form-check-input" type="radio" name="married" id="married-no" value="No"
                                         ref={register({ required: true })}
+                                        defaultChecked={state.data.married === "No"}
+
 
                                     />
                                     <label className="form-check-label" htmlFor="married-no">No</label>
@@ -1080,7 +1092,8 @@ const Step2 = props => {
                             >
                                 Get a Quote!
                                     </button>
-                            <button id="submit" name="submit" className="btn btn-primary" type="submit">Get a Quote!</button>
+                            <button id="submit" name="submit" className="btn btn-primary" type="submit" disabled={submitBut} onClick={() => setsubmitBut(true)}>{submitBut ? 'Sending...' : 'Get a Quote'}</button>
+                            <div className="submit-message" hidden={!submitBut} >We're submitting your data...</div>
                         </div>
                     </div>
                 </div>

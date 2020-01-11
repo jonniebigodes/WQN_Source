@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { withRouter } from 'react-router-dom';
 import { useStateMachine } from "little-state-machine";
@@ -12,16 +12,20 @@ const Step1 = props => {
         mode: "onBlur"
     });
     const { action, state } = useStateMachine(updateAction);
-
+    let disableSubmit = false;
     let ready = !formState.isValid;
     //const [theEmail, setTheEmail] = useState("");
 
+    const [submitBut, setsubmitBut] = useState(false);
+
+    // In constructor
     //console.log(JSON.stringify(formState, null, 2));
 
     const onSubmit = (data, e) => {
+        disableSubmit = true;
         e.preventDefault();
         console.log('Submit event', e)
-        alert(JSON.stringify(data))
+        //alert(JSON.stringify(data))
         var form_data = new FormData();
         for (var key in data) {
             form_data.append(key, data[key]);
@@ -40,6 +44,7 @@ const Step1 = props => {
     //let page = 1;
     function success(data, response) {
         console.log('Success!', response);
+        disableSubmit = false;
         // page = page + 1;
         // if (page > 1) {
         //     hideShow('form-page-1', 'form-page-2');
@@ -60,6 +65,7 @@ const Step1 = props => {
 
     function fuckup(error) {
         console.error('Error!', error.message);
+        disableSubmit = false;
         // changeSubmit("Try Again",false);
         alert("Something Screwed Up. Please Try Again.");
         // setTimeout(() => {
@@ -241,7 +247,8 @@ const Step1 = props => {
                                 >
                                     Get a Quote!
                             </button>
-                                <button id="submit" name="submit" className="btn btn-primary" type="submit">Get a Quote!</button>
+                                <button id="submit" name="submit" className="btn btn-primary" type="submit" disabled={submitBut} onClick={() => setsubmitBut(true)}>{submitBut ? 'Sending...' : 'Get a Quote'}</button>
+                                <div className="submit-message" hidden={!submitBut} >We're processing the first page...</div>
                             </div>
                         </div>
                     </div>
