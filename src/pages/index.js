@@ -17,7 +17,7 @@ import { FaFingerprint, FaCommentDollar, FaCheckDouble } from 'react-icons/fa';
 
 createStore({
     data: {}
-  });
+});
 
 function Service(props) {
     //alert(props.ri)
@@ -49,7 +49,7 @@ export default () => (
         <div className="py-5 bcform">
             <Container>
                 <Row className="d-flex justify-content-center">
-                    <Col md={10}>
+                    <Col md={12}>
                         <h3 className="text-center">Get a Personalized Quote Today!</h3>
                         <StateMachineProvider>
                             <Router>

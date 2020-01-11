@@ -2,7 +2,11 @@ import React from 'react'
 import { Row, Col, Container } from 'reactstrap'
 import Link from '../components/link'
 import Layout from '../components/layout'
-import ContactForm from '../components/bcform1'
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { StateMachineProvider, createStore } from "little-state-machine";
+
+
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFax } from 'react-icons/fa'
 import Styled from 'styled-components'
 
@@ -36,14 +40,6 @@ export default () => (
                 <ContactItem text={"contact@WeQuoteNevada.com"} href={`mailto:contact@wequotenevada.com?subject=I was just on WeQuoteNevada.com...`} type="Email" Icon={FaEnvelope} />
                 <ContactItem text={"702-344-2400"} href={`tel:702-344-2400`} type="Phone" Icon={FaPhone} />
                 <ContactItem text={"Um, you know it's 2020, right?"} type="Fax" Icon={FaFax} />
-            </Row>
-            <hr />
-            <Row className="py-5">
-                <Col md={8} className="m-auto">
-                    <h4 className="text-center text-secondary">Message Us</h4>
-                    <hr className="rule-short-round rule-primary" />
-                    <ContactForm />
-                </Col>
             </Row>
         </Container>
     </Layout>

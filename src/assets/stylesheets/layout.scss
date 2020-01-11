@@ -20,6 +20,8 @@ $gradient: linear-gradient(210deg, #943cff 0%, #dd45d3 40.13%, #fc9a57 90%);
 body {
   font-family: "HKGrotesk", "Questrial", sans-serif;
   overflow-x: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 h1 {
@@ -171,4 +173,10 @@ input:focus::-webkit-input-placeholder,
   min-height: 39px;
   overflow: hidden;
   white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .col-headers {
+    display: none;
+    visibility: hidden;
+  }
 }
