@@ -180,3 +180,18 @@ input:focus::-webkit-input-placeholder,
     visibility: hidden;
   }
 }
+.result {
+  text-align: center;
+  margin: 50px auto;
+}
+.contact-div {
+  min-height: 700px;
+  text-align: center;
+}
+
+.contact-div h1 {
+  margin: 50px 0 25px 0;
+}
+.submit-message {
+  margin: 10px auto;
+}

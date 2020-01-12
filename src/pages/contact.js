@@ -34,13 +34,17 @@ let ContactItem = ({ text, type, Icon, href }) => (
 
 export default () => (
     <Layout>
-        <Container>
-            <Row className="py-5">
-                <ContactItem text={"2561 Wigwam Parkway\nHenderson, NV 89074"} type="Address" Icon={FaMapMarkerAlt} />
-                <ContactItem text={"contact@WeQuoteNevada.com"} href={`mailto:contact@wequotenevada.com?subject=I was just on WeQuoteNevada.com...`} type="Email" Icon={FaEnvelope} />
-                <ContactItem text={"702-344-2400"} href={`tel:702-344-2400`} type="Phone" Icon={FaPhone} />
-                <ContactItem text={"Um, you know it's 2020, right?"} type="Fax" Icon={FaFax} />
-            </Row>
-        </Container>
+        <div className="contact-div">
+            <h1>Contact Us!</h1>
+            <Container>
+                <Row className="py-5">
+
+                    <ContactItem text={"2561 Wigwam Parkway\nHenderson, NV 89074"} type="Address" Icon={FaMapMarkerAlt} />
+                    <ContactItem text={"contact@WeQuoteNevada.com"} href={`mailto:contact@wequotenevada.com?subject=I was just on WeQuoteNevada.com...`} type="Email" Icon={FaEnvelope} />
+                    <ContactItem text={"702-344-2400"} href={`tel:702-344-2400`} type="Phone" Icon={FaPhone} />
+                    <ContactItem text={"Um, you know it's 2020, right?"} type="Fax" Icon={FaFax} />
+                </Row>
+            </Container>
+        </div>
     </Layout>
 )
