@@ -15,6 +15,8 @@ import Slider from '../components/slider'
 import Box from '../components/box'
 import { FaFingerprint, FaCommentDollar, FaCheckDouble } from 'react-icons/fa';
 
+//const history = typeof window !== 'undefined' ? createBrowserHistory() : null;
+
 createStore({
     data: {}
 });

@@ -4,15 +4,16 @@ import { withRouter } from 'react-router-dom';
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 
+//const history = typeof window !== 'undefined' ? createBrowserHistory() : null;
 
 const Step1 = props => {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec' //Production URL
-    //const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
+    //const scriptURL = 'https://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec' //Production URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
     const { register, handleSubmit, formState, errors } = useForm({
         mode: "onBlur"
     });
     const { action, state } = useStateMachine(updateAction);
-    let disableSubmit = false;
+    //let disableSubmit = false;
     let ready = !formState.isValid;
     //const [theEmail, setTheEmail] = useState("");
 
@@ -22,7 +23,7 @@ const Step1 = props => {
     //console.log(JSON.stringify(formState, null, 2));
 
     const onSubmit = (data, e) => {
-        disableSubmit = true;
+        //disableSubmit = true;
         e.preventDefault();
         console.log('Submit event', e)
         //alert(JSON.stringify(data))
@@ -44,7 +45,7 @@ const Step1 = props => {
     //let page = 1;
     function success(data, response) {
         console.log('Success!', response);
-        disableSubmit = false;
+        //disableSubmit = false;
         // page = page + 1;
         // if (page > 1) {
         //     hideShow('form-page-1', 'form-page-2');
@@ -65,7 +66,7 @@ const Step1 = props => {
 
     function fuckup(error) {
         console.error('Error!', error.message);
-        disableSubmit = false;
+        //disableSubmit = false;
         // changeSubmit("Try Again",false);
         alert("Something Screwed Up. Please Try Again.");
         // setTimeout(() => {

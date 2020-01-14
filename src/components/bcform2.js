@@ -4,13 +4,15 @@ import { withRouter } from 'react-router-dom';
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 
-const Step2 = props => {
-    const scriptURL = 'hhttps://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec' //Production URL
-    //const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
+//const history = typeof window !== 'undefined' ? createBrowserHistory() : null;
+
+const Step1 = props => {
+    //const scriptURL = 'hhttps://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec' //Production URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
     const { register, handleSubmit, formState, errors, watch } = useForm({
         mode: "onBlur"
     });
-    let disableSubmit = false;
+    //let disableSubmit = false;
 
     const numCars = watch("vehicles", props.cars);
     const numDrivers = watch("addDrivers", props.cars);
@@ -32,7 +34,7 @@ const Step2 = props => {
     //console.log(JSON.stringify(formState, null, 2));
 
     const onSubmit = (payload, e) => {
-        disableSubmit = true;
+        //disableSubmit = true;
         e.preventDefault();
         action(payload)
         console.log('Submit event', e)
@@ -57,10 +59,10 @@ const Step2 = props => {
             .catch(error => fuckup(error))
     };
 
-    function goBack() {
-        //action(payload);
-        props.history.push("./bcform1")
-    }
+    // function goBack() {
+    //     action(payload);
+    //     props.history.push("./bcform1")
+    // }
     function hideShow(hide, show) {
         const hideme = document.getElementById(hide);
         const showme = document.getElementById(show);
@@ -70,7 +72,7 @@ const Step2 = props => {
     //let page = 1;
     function success(data, response) {
         console.log('Success!', response);
-        disableSubmit = false;
+        //disableSubmit = false;
         // page = page + 1;
         // if (page > 1) {
         //     hideShow('form-page-1', 'form-page-2');
@@ -91,7 +93,7 @@ const Step2 = props => {
 
     function fuckup(error) {
         console.error('Error!', error.message);
-        disableSubmit = false;
+        //disableSubmit = false;
         // changeSubmit("Try Again",false);
         alert("Something Screwed Up. Please Try Again.");
         // setTimeout(() => {
@@ -1103,4 +1105,4 @@ const Step2 = props => {
     )
 }
 
-export default withRouter(Step2);
+export default withRouter(Step1);
