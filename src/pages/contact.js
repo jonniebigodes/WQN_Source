@@ -3,10 +3,6 @@ import { Row, Col, Container } from 'reactstrap'
 import Link from '../components/link'
 import Layout from '../components/layout'
 
-//import { BrowserRouter as Router, Route } from "react-router-dom";
-//import { StateMachineProvider, createStore } from "little-state-machine";
-
-
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFax } from 'react-icons/fa'
 import Styled from 'styled-components'
 

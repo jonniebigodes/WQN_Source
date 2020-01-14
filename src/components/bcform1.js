@@ -4,27 +4,18 @@ import { withRouter } from 'react-router-dom';
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 
-//const history = typeof window !== 'undefined' ? createBrowserHistory() : null;
-
 const Step1 = props => {
     //const scriptURL = 'https://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec' //Production URL
     const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
-    const { register, handleSubmit, formState, errors } = useForm({
+    const { register, handleSubmit, errors } = useForm({
         mode: "onBlur"
     });
     const { action, state } = useStateMachine(updateAction);
-    //let disableSubmit = false;
-    let ready = !formState.isValid;
-    //const [theEmail, setTheEmail] = useState("");
-
     const [submitBut, setsubmitBut] = useState(false);
 
-    // In constructor
-    //console.log(JSON.stringify(formState, null, 2));
-
     const onSubmit = (data, e) => {
-        //disableSubmit = true;
         e.preventDefault();
+        action(data)
         console.log('Submit event', e)
         //alert(JSON.stringify(data))
         var form_data = new FormData();
@@ -36,44 +27,15 @@ const Step1 = props => {
             .catch(error => fuckup(error))
     };
 
-    function hideShow(hide, show) {
-        const hideme = document.getElementById(hide);
-        const showme = document.getElementById(show);
-        hideme.classList.add('hidden');
-        showme.classList.remove('hidden');
-    }
-    //let page = 1;
     function success(data, response) {
         console.log('Success!', response);
-        //disableSubmit = false;
-        // page = page + 1;
-        // if (page > 1) {
-        //     hideShow('form-page-1', 'form-page-2');
-        // }
         //React Hook Form Wizard https://codesandbox.io/s/form-wizard-pages-kkg7m
-        action(data)
         props.history.push("./bcform2")
-        // changeSubmit("It Worked!",true);
-        //alert("Your Submission was Successful! We'll talk to you soon!");
-        // setTimeout(() => {
-        //     hideAllMessages();
-        //     main.classList.add('hidden')
-        //     successMessage.classList.remove('hidden')
-        //     thanksOL.classList.remove('hidden')
-        //     //loading.classList.add('hidden')
-        // }, 500)
     }
 
     function fuckup(error) {
         console.error('Error!', error.message);
-        //disableSubmit = false;
-        // changeSubmit("Try Again",false);
         alert("Something Screwed Up. Please Try Again.");
-        // setTimeout(() => {
-        //     hideAllMessages();
-        //     errorMessage.classList.remove('hidden')
-        //     //loading.classList.add('hidden')
-        // }, 500)
     }
     return (
         <div>
@@ -235,19 +197,6 @@ const Step1 = props => {
                     <div className="form-group">
                         <div className="row">
                             <div className="col text-center">
-                                <button
-                                    id="form-nav-1"
-                                    name="form-nav-1"
-                                    className="btn btn-primary form-nav"
-                                    type="button"
-                                    disabled={ready}
-                                    onClick={() => {
-                                        hideShow('form-page-1', 'form-page-2');
-                                    }}
-                                    hidden
-                                >
-                                    Get a Quote!
-                            </button>
                                 <button id="submit" name="submit" className="btn btn-primary" type="submit" disabled={submitBut} onClick={() => setsubmitBut(true)}>{submitBut ? 'Sending...' : 'Get a Quote'}</button>
                                 <div className="submit-message" hidden={!submitBut} >We're processing the first page...</div>
                             </div>

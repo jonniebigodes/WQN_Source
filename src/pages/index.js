@@ -1,10 +1,10 @@
 import React from "react"
-
 import { Container, Row, Col } from 'reactstrap'
 //import Link from '../components/link'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-//import { FaGithub } from 'react-icons/fa'
+import Box from '../components/box'
+import { FaFingerprint, FaCommentDollar, FaCheckDouble } from 'react-icons/fa';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { StateMachineProvider, createStore } from "little-state-machine";
@@ -12,10 +12,6 @@ import Step1 from "../components/bcform1";
 import Step2 from "../components/bcform2";
 import Result from "../components/Result.js";
 import Slider from '../components/slider'
-import Box from '../components/box'
-import { FaFingerprint, FaCommentDollar, FaCheckDouble } from 'react-icons/fa';
-
-//const history = typeof window !== 'undefined' ? createBrowserHistory() : null;
 
 createStore({
     data: {}

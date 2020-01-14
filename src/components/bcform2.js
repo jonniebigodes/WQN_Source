@@ -4,37 +4,20 @@ import { withRouter } from 'react-router-dom';
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 
-//const history = typeof window !== 'undefined' ? createBrowserHistory() : null;
-
 const Step1 = props => {
     //const scriptURL = 'hhttps://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec' //Production URL
     const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
-    const { register, handleSubmit, formState, errors, watch } = useForm({
+    const { register, handleSubmit, errors, watch } = useForm({
         mode: "onBlur"
     });
-    //let disableSubmit = false;
 
     const numCars = watch("vehicles", props.cars);
     const numDrivers = watch("addDrivers", props.cars);
-
     const { action, state } = useStateMachine(updateAction);
-
     const [submitBut, setsubmitBut] = useState(false);
-
-
-    let ready = !formState.isValid;
     const yearPlaceholder = new Date().getFullYear();
-    //const ytos = yearPlaceholder.toString();
-    // lastChar = ytos.slice(-1) //gets the last character
-    //const Y = +(lastChar) //converts the string back into a number
-    //const regexCarYear = new RegExp("^(19[0-9]{2}|20[0-1][[0-9]|202[0-" + Y + "])$")
-    //const regexValidCarYear = regexCarYear.toString();
-
-    //alert(regexValidCarYear);
-    //console.log(JSON.stringify(formState, null, 2));
 
     const onSubmit = (payload, e) => {
-        //disableSubmit = true;
         e.preventDefault();
         action(payload)
         console.log('Submit event', e)
@@ -59,48 +42,15 @@ const Step1 = props => {
             .catch(error => fuckup(error))
     };
 
-    // function goBack() {
-    //     action(payload);
-    //     props.history.push("./bcform1")
-    // }
-    function hideShow(hide, show) {
-        const hideme = document.getElementById(hide);
-        const showme = document.getElementById(show);
-        hideme.classList.add('hidden');
-        showme.classList.remove('hidden');
-    }
-    //let page = 1;
     function success(data, response) {
         console.log('Success!', response);
-        //disableSubmit = false;
-        // page = page + 1;
-        // if (page > 1) {
-        //     hideShow('form-page-1', 'form-page-2');
-        // }
         //React Hook Form Wizard https://codesandbox.io/s/form-wizard-pages-kkg7m
-
         props.history.push("./result")
-        // changeSubmit("It Worked!",true);
-        //alert("Your Submission was Successful! We'll talk to you soon!");
-        // setTimeout(() => {
-        //     hideAllMessages();
-        //     main.classList.add('hidden')
-        //     successMessage.classList.remove('hidden')
-        //     thanksOL.classList.remove('hidden')
-        //     //loading.classList.add('hidden')
-        // }, 500)
     }
 
     function fuckup(error) {
         console.error('Error!', error.message);
-        //disableSubmit = false;
-        // changeSubmit("Try Again",false);
         alert("Something Screwed Up. Please Try Again.");
-        // setTimeout(() => {
-        //     hideAllMessages();
-        //     errorMessage.classList.remove('hidden')
-        //     //loading.classList.add('hidden')
-        // }, 500)
     }
     return (
         <div id="form-page-2" className="form-page-2">
@@ -1082,18 +1032,6 @@ const Step1 = props => {
                 <div className="form-group">
                     <div className="row">
                         <div className="col text-center">
-                            <button
-                                id="form-nav-1"
-                                name="form-nav-1"
-                                className="btn btn-primary form-nav hidden"
-                                type="button"
-                                disabled={ready}
-                                onClick={() => {
-                                    hideShow('form-page-1', 'form-page-2');
-                                }}
-                            >
-                                Get a Quote!
-                                    </button>
                             <button id="submit" name="submit" className="btn btn-primary" type="submit" disabled={submitBut} onClick={() => setsubmitBut(true)}>{submitBut ? 'Sending...' : 'Get a Quote'}</button>
                             <div className="submit-message" hidden={!submitBut} >We're submitting your data...</div>
                         </div>
