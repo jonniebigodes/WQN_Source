@@ -2,8 +2,6 @@ import React from "react";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 
-//const history = typeof window !== 'undefined' ? createBrowserHistory() : null;
-
 const Result = props => {
     const { state } = useStateMachine(updateAction);
 
