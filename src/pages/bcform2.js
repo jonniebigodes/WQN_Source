@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
-import { withRouter } from 'react-router-dom';
+import { navigate } from "gatsby"
 import { useStateMachine } from "little-state-machine";
-import updateAction from "./updateAction";
+import updateAction from "../components/updateAction";
 
-const Step1 = props => {
+const Step2 = props => {
     //const scriptURL = 'hhttps://script.google.com/macros/s/AKfycbwbrIjWVJfPDC4AZGHmopV3sDXDRvrZ7BniEVP2shUn0EjJDFV9/exec' //Production URL
     const scriptURL = "https://script.google.com/macros/s/AKfycbzpbG1CcPH5y7BGW6cJ5r2VivimxL7EQl96RBx8Cp6qRj1MW7zm/exec" //Test URL https://docs.google.com/spreadsheets/d/1CoQ2ZOVJLT9U9OkgdEvxuX3vNg-wZwLjbOEYr0Ivfhc/edit#gid=0
     const { register, handleSubmit, errors, watch } = useForm({
@@ -19,6 +19,14 @@ const Step1 = props => {
 
     const onSubmit = (payload, e) => {
         e.preventDefault();
+        setsubmitBut(true)
+        console.log(JSON.stringify(payload,null,2))
+        action(payload)
+        setTimeout(()=> {
+            success(payload)
+         }, 3000)
+        // the code below was commented out for testing purposes only
+        /* e.preventDefault();
         action(payload)
         console.log('Submit event', e)
         //alert(JSON.stringify(data))
@@ -39,13 +47,18 @@ const Step1 = props => {
         }
         fetch(scriptURL, { method: 'POST', body: form_data })
             .then(response => success(allData, response))
-            .catch(error => fuckup(error))
+            .catch(error => fuckup(error)) */
+
+        
     };
 
     function success(data, response) {
         console.log('Success!', response);
         //React Hook Form Wizard https://codesandbox.io/s/form-wizard-pages-kkg7m
-        props.history.push("./result")
+       /* this is not required Gatsby has a built navigation mechanism that will allow you achieve the same result
+       props.history.push("./result") 
+       */
+       navigate("/result/")
     }
 
     function fuckup(error) {
@@ -1032,7 +1045,7 @@ const Step1 = props => {
                 <div className="form-group">
                     <div className="row">
                         <div className="col text-center">
-                            <button id="submit" name="submit" className="btn btn-primary" type="submit" disabled={submitBut} onClick={() => setsubmitBut(true)}>{submitBut ? 'Sending...' : 'Get a Quote'}</button>
+                            <button id="submit" name="submit" className="btn btn-primary" type="submit" disabled={submitBut}>{submitBut ? 'Sending...' : 'Get a Quote'}</button>
                             <div className="submit-message" hidden={!submitBut} >We're submitting your data...</div>
                         </div>
                     </div>
@@ -1042,5 +1055,6 @@ const Step1 = props => {
 
     )
 }
+export default Step2
 
-export default withRouter(Step1);
+/* export default withRouter(Step1); */

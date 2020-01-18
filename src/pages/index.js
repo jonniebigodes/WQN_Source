@@ -6,16 +6,12 @@ import SEO from "../components/seo"
 import Box from '../components/box'
 import { FaFingerprint, FaCommentDollar, FaCheckDouble } from 'react-icons/fa';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { StateMachineProvider, createStore } from "little-state-machine";
 import Step1 from "../components/bcform1";
-import Step2 from "../components/bcform2";
-import Result from "../components/Result.js";
 import Slider from '../components/slider'
 
-createStore({
+/* createStore({
     data: {}
-});
+}); */
 
 function Service(props) {
     //alert(props.ri)
@@ -49,13 +45,7 @@ export default () => (
                 <Row className="d-flex justify-content-center">
                     <Col md={12}>
                         <h3 className="text-center">Get a Personalized Quote Today!</h3>
-                        <StateMachineProvider>
-                            <Router>
-                                <Route exact path="/" component={Step1} />
-                                <Route path="/bcform2" component={Step2} />
-                                <Route path="/result" component={Result} />
-                            </Router>
-                        </StateMachineProvider>
+                        <Step1/>
                     </Col>
                 </Row>
             </Container>
